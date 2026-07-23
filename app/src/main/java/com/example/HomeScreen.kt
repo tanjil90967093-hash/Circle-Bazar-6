@@ -180,11 +180,13 @@ fun HomeScreen(navController: NavController = rememberNavController()) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Categories", style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold))
+                Text("Categories", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold), maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f).padding(end = 8.dp))
                 Text(
                     "See All", 
                     color = MaterialTheme.colorScheme.primary, 
                     fontWeight = FontWeight.Medium,
+                    fontSize = 12.sp,
+                    maxLines = 1,
                     modifier = Modifier.clickable { navController.navigate("category") }
                 )
             }
@@ -246,7 +248,7 @@ fun HomeScreen(navController: NavController = rememberNavController()) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f).padding(end = 4.dp)) {
                     val infiniteTransition = rememberInfiniteTransition(label = "shimmer_transition")
                     val translateAnim by infiniteTransition.animateFloat(
                         initialValue = 0f,
@@ -262,8 +264,8 @@ fun HomeScreen(navController: NavController = rememberNavController()) {
                         start = Offset(translateAnim - 200f, translateAnim - 200f),
                         end = Offset(translateAnim, translateAnim)
                     )
-                    Text("CIRCLE DEALS", style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold, brush = shimmerBrush))
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Text("CIRCLE DEALS", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold, brush = shimmerBrush), maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f, fill = false))
+                    Spacer(modifier = Modifier.width(4.dp))
                     
                     val h = remainingSeconds / 3600
                     val m = (remainingSeconds % 3600) / 60
@@ -272,29 +274,29 @@ fun HomeScreen(navController: NavController = rememberNavController()) {
                     val mStr = m.toString().padStart(2, '0')
                     val sStr = s.toString().padStart(2, '0')
                     
-                    Row(horizontalArrangement = Arrangement.spacedBy(4.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(2.dp), verticalAlignment = Alignment.CenterVertically) {
                         Box(
                             modifier = Modifier
                                 .background(Color(0xFFFFC107), RoundedCornerShape(4.dp))
-                                .padding(horizontal = 4.dp, vertical = 2.dp)
+                                .padding(horizontal = 3.dp, vertical = 1.dp)
                         ) {
-                            Text(hStr, color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                            Text(hStr, color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 10.sp, maxLines = 1)
                         }
-                        Text(":", fontWeight = FontWeight.Bold, color = Color.Black, fontSize = 14.sp)
+                        Text(":", fontWeight = FontWeight.Bold, color = Color.Black, fontSize = 12.sp, maxLines = 1)
                         Box(
                             modifier = Modifier
                                 .background(Color(0xFFFFC107), RoundedCornerShape(4.dp))
-                                .padding(horizontal = 4.dp, vertical = 2.dp)
+                                .padding(horizontal = 3.dp, vertical = 1.dp)
                         ) {
-                            Text(mStr, color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                            Text(mStr, color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 10.sp, maxLines = 1)
                         }
-                        Text(":", fontWeight = FontWeight.Bold, color = Color.Black, fontSize = 14.sp)
+                        Text(":", fontWeight = FontWeight.Bold, color = Color.Black, fontSize = 12.sp, maxLines = 1)
                         Box(
                             modifier = Modifier
                                 .background(Color(0xFFFFC107), RoundedCornerShape(4.dp))
-                                .padding(horizontal = 4.dp, vertical = 2.dp)
+                                .padding(horizontal = 3.dp, vertical = 1.dp)
                         ) {
-                            Text(sStr, color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                            Text(sStr, color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 10.sp, maxLines = 1)
                         }
                     }
                 }
@@ -302,6 +304,8 @@ fun HomeScreen(navController: NavController = rememberNavController()) {
                     "Shop More", 
                     color = MaterialTheme.colorScheme.primary, 
                     fontWeight = FontWeight.Medium,
+                    fontSize = 12.sp,
+                    maxLines = 1,
                     modifier = Modifier.clickable { navController.navigate("circle_deals") }
                 )
             }
@@ -323,8 +327,10 @@ fun HomeScreen(navController: NavController = rememberNavController()) {
             // Just For You
             Text(
                 "Just For You",
-                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
-                modifier = Modifier.padding(horizontal = 16.dp)
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                modifier = Modifier.padding(horizontal = 16.dp),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
             Spacer(modifier = Modifier.height(12.dp))
             
@@ -477,9 +483,9 @@ fun ProductCard(isShoe: Boolean, modifier: Modifier = Modifier) {
                             color = MaterialTheme.colorScheme.primary,
                             shape = RoundedCornerShape(topStart = 8.dp, bottomEnd = 8.dp)
                         )
-                        .padding(horizontal = 8.dp, vertical = 4.dp)
+                        .padding(horizontal = 6.dp, vertical = 2.dp)
                 ) {
-                    Text("-25%", color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                    Text("-25%", color = Color.White, fontSize = 9.sp, fontWeight = FontWeight.Bold, maxLines = 1)
                 }
             }
             
@@ -626,9 +632,9 @@ fun CircleDealProductCard(item: CircleDealItem, modifier: Modifier = Modifier, s
                         color = MaterialTheme.colorScheme.primary,
                         shape = RoundedCornerShape(topStart = 8.dp, bottomEnd = 8.dp)
                     )
-                    .padding(horizontal = 8.dp, vertical = 4.dp)
+                    .padding(horizontal = 6.dp, vertical = 2.dp)
             ) {
-                Text(item.discount, color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                Text(item.discount, color = Color.White, fontSize = 9.sp, fontWeight = FontWeight.Bold, maxLines = 1)
             }
             
             // Favorite Icon
