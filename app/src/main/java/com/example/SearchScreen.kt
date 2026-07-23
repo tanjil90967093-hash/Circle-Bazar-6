@@ -94,7 +94,7 @@ fun SearchScreen(navController: NavController) {
                         BasicTextField(
                             value = searchQuery,
                             onValueChange = { searchQuery = it },
-                            textStyle = TextStyle(color = Color.Black, fontSize = 14.sp),
+                            textStyle = LocalTextStyle.current.copy(color = Color.Black, fontSize = 14.sp),
                             singleLine = true,
                             cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
                             modifier = Modifier.fillMaxWidth()

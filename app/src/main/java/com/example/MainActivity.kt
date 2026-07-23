@@ -19,6 +19,16 @@ class MainActivity : ComponentActivity() {
     super.attachBaseContext(context)
   }
 
+  override fun applyOverrideConfiguration(overrideConfiguration: Configuration?) {
+    if (overrideConfiguration != null) {
+      val uiMode = overrideConfiguration.uiMode
+      overrideConfiguration.setTo(baseContext.resources.configuration)
+      overrideConfiguration.uiMode = uiMode
+    }
+    overrideConfiguration?.fontScale = 1.0f
+    super.applyOverrideConfiguration(overrideConfiguration)
+  }
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     enableEdgeToEdge()
