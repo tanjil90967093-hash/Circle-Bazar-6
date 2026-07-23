@@ -6,31 +6,25 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
+val defaultFontFamily = FontFamily.SansSerif
+
+private val baseline = Typography()
+
 // Set of Material typography styles to start with
-val Typography =
-  Typography(
-    bodyLarge =
-      TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp,
-      )
-    /* Other default text styles to override
-    titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp
-    ),
-    labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
-    )
-    */
-  )
+val Typography = Typography(
+    displayLarge = baseline.displayLarge.copy(fontFamily = defaultFontFamily),
+    displayMedium = baseline.displayMedium.copy(fontFamily = defaultFontFamily),
+    displaySmall = baseline.displaySmall.copy(fontFamily = defaultFontFamily),
+    headlineLarge = baseline.headlineLarge.copy(fontFamily = defaultFontFamily),
+    headlineMedium = baseline.headlineMedium.copy(fontFamily = defaultFontFamily),
+    headlineSmall = baseline.headlineSmall.copy(fontFamily = defaultFontFamily),
+    titleLarge = baseline.titleLarge.copy(fontFamily = defaultFontFamily),
+    titleMedium = baseline.titleMedium.copy(fontFamily = defaultFontFamily),
+    titleSmall = baseline.titleSmall.copy(fontFamily = defaultFontFamily),
+    bodyLarge = baseline.bodyLarge.copy(fontFamily = defaultFontFamily),
+    bodyMedium = baseline.bodyMedium.copy(fontFamily = defaultFontFamily),
+    bodySmall = baseline.bodySmall.copy(fontFamily = defaultFontFamily),
+    labelLarge = baseline.labelLarge.copy(fontFamily = defaultFontFamily),
+    labelMedium = baseline.labelMedium.copy(fontFamily = defaultFontFamily),
+    labelSmall = baseline.labelSmall.copy(fontFamily = defaultFontFamily),
+)
